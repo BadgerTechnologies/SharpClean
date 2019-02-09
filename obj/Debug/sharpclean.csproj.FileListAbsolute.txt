@@ -1,0 +1,55 @@
+C:\Users\100062056\source\repos\sharpclean\sharpclean\bin\Debug\sharpclean.exe.config
+C:\Users\100062056\source\repos\sharpclean\sharpclean\bin\Debug\sharpclean.exe
+C:\Users\100062056\source\repos\sharpclean\sharpclean\bin\Debug\sharpclean.pdb
+C:\Users\100062056\source\repos\sharpclean\sharpclean\obj\Debug\sharpclean.csprojAssemblyReference.cache
+C:\Users\100062056\source\repos\sharpclean\sharpclean\obj\Debug\sharpclean.Form1.resources
+C:\Users\100062056\source\repos\sharpclean\sharpclean\obj\Debug\sharpclean.Properties.Resources.resources
+C:\Users\100062056\source\repos\sharpclean\sharpclean\obj\Debug\sharpclean.csproj.GenerateResource.cache
+C:\Users\100062056\source\repos\sharpclean\sharpclean\obj\Debug\sharpclean.csproj.CoreCompileInputs.cache
+C:\Users\100062056\source\repos\sharpclean\sharpclean\obj\Debug\sharpclean.exe
+C:\Users\100062056\source\repos\sharpclean\sharpclean\obj\Debug\sharpclean.pdb
+C:\Users\100062056\source\repos\sharpclean\sharpclean\bin\Debug\Magick.NET-Q16-AnyCPU.dll
+C:\Users\100062056\source\repos\sharpclean\sharpclean\bin\Debug\Magick.NET-Q16-AnyCPU.xml
+C:\Users\100062056\source\repos\sharpclean\sharpclean\obj\Debug\sharpclean.csproj.CopyComplete
+C:\Users\100065314\Downloads\sharpclean-initial_integrated_gui\sharpclean\sharpclean\bin\Debug\sharpclean.exe.config
+C:\Users\100065314\Downloads\sharpclean-initial_integrated_gui\sharpclean\sharpclean\bin\Debug\sharpclean.exe
+C:\Users\100065314\Downloads\sharpclean-initial_integrated_gui\sharpclean\sharpclean\bin\Debug\sharpclean.pdb
+C:\Users\100065314\Downloads\sharpclean-initial_integrated_gui\sharpclean\sharpclean\bin\Debug\Magick.NET-Q16-AnyCPU.dll
+C:\Users\100065314\Downloads\sharpclean-initial_integrated_gui\sharpclean\sharpclean\bin\Debug\Magick.NET-Q16-AnyCPU.xml
+C:\Users\100065314\Downloads\sharpclean-initial_integrated_gui\sharpclean\sharpclean\obj\Debug\sharpclean.csprojAssemblyReference.cache
+C:\Users\100065314\Downloads\sharpclean-initial_integrated_gui\sharpclean\sharpclean\obj\Debug\sharpclean.Form1.resources
+C:\Users\100065314\Downloads\sharpclean-initial_integrated_gui\sharpclean\sharpclean\obj\Debug\sharpclean.Properties.Resources.resources
+C:\Users\100065314\Downloads\sharpclean-initial_integrated_gui\sharpclean\sharpclean\obj\Debug\sharpclean.csproj.GenerateResource.cache
+C:\Users\100065314\Downloads\sharpclean-initial_integrated_gui\sharpclean\sharpclean\obj\Debug\sharpclean.csproj.CoreCompileInputs.cache
+C:\Users\100065314\Downloads\sharpclean-initial_integrated_gui\sharpclean\sharpclean\obj\Debug\sharpclean.csproj.CopyComplete
+C:\Users\100065314\Downloads\sharpclean-initial_integrated_gui\sharpclean\sharpclean\obj\Debug\sharpclean.exe
+C:\Users\100065314\Downloads\sharpclean-initial_integrated_gui\sharpclean\sharpclean\obj\Debug\sharpclean.pdb
+C:\Users\100062056\source\repos\sharpclean\sharpclean\obj\Debug\sharpclean.helpForm.resources
+C:\Users\100057822\Documents\GitHub\sharpclean\sharpclean\bin\Debug\sharpclean.exe.config
+C:\Users\100057822\Documents\GitHub\sharpclean\sharpclean\bin\Debug\sharpclean.exe
+C:\Users\100057822\Documents\GitHub\sharpclean\sharpclean\bin\Debug\sharpclean.pdb
+C:\Users\100057822\Documents\GitHub\sharpclean\sharpclean\bin\Debug\Magick.NET-Q16-AnyCPU.dll
+C:\Users\100057822\Documents\GitHub\sharpclean\sharpclean\bin\Debug\Magick.NET-Q16-AnyCPU.xml
+C:\Users\100057822\Documents\GitHub\sharpclean\sharpclean\obj\Debug\sharpclean.csprojAssemblyReference.cache
+C:\Users\100057822\Documents\GitHub\sharpclean\sharpclean\obj\Debug\sharpclean.Form1.resources
+C:\Users\100057822\Documents\GitHub\sharpclean\sharpclean\obj\Debug\sharpclean.helpForm.resources
+C:\Users\100057822\Documents\GitHub\sharpclean\sharpclean\obj\Debug\sharpclean.Properties.Resources.resources
+C:\Users\100057822\Documents\GitHub\sharpclean\sharpclean\obj\Debug\sharpclean.csproj.GenerateResource.cache
+C:\Users\100057822\Documents\GitHub\sharpclean\sharpclean\obj\Debug\sharpclean.csproj.CoreCompileInputs.cache
+C:\Users\100057822\Documents\GitHub\sharpclean\sharpclean\obj\Debug\sharpclean.csproj.CopyComplete
+C:\Users\100057822\Documents\GitHub\sharpclean\sharpclean\obj\Debug\sharpclean.exe
+C:\Users\100057822\Documents\GitHub\sharpclean\sharpclean\obj\Debug\sharpclean.pdb
+C:\Users\100057822\source\repos\shaprclean - master\sharpclean\bin\Debug\sharpclean.exe.config
+C:\Users\100057822\source\repos\shaprclean - master\sharpclean\bin\Debug\sharpclean.exe
+C:\Users\100057822\source\repos\shaprclean - master\sharpclean\bin\Debug\sharpclean.pdb
+C:\Users\100057822\source\repos\shaprclean - master\sharpclean\bin\Debug\Magick.NET-Q16-AnyCPU.dll
+C:\Users\100057822\source\repos\shaprclean - master\sharpclean\bin\Debug\Magick.NET-Q16-AnyCPU.xml
+C:\Users\100057822\source\repos\shaprclean - master\sharpclean\obj\Debug\sharpclean.csprojAssemblyReference.cache
+C:\Users\100057822\source\repos\shaprclean - master\sharpclean\obj\Debug\sharpclean.Form1.resources
+C:\Users\100057822\source\repos\shaprclean - master\sharpclean\obj\Debug\sharpclean.helpForm.resources
+C:\Users\100057822\source\repos\shaprclean - master\sharpclean\obj\Debug\sharpclean.Properties.Resources.resources
+C:\Users\100057822\source\repos\shaprclean - master\sharpclean\obj\Debug\sharpclean.csproj.GenerateResource.cache
+C:\Users\100057822\source\repos\shaprclean - master\sharpclean\obj\Debug\sharpclean.csproj.CoreCompileInputs.cache
+C:\Users\100057822\source\repos\shaprclean - master\sharpclean\obj\Debug\sharpclean.csproj.CopyComplete
+C:\Users\100057822\source\repos\shaprclean - master\sharpclean\obj\Debug\sharpclean.exe
+C:\Users\100057822\source\repos\shaprclean - master\sharpclean\obj\Debug\sharpclean.pdb
