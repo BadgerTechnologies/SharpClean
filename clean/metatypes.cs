@@ -24,7 +24,6 @@ namespace sharpclean
     public struct pixel
     {
         public bool selected;   //used for selection
-        public bool found;      //used in filler
         public byte value;      //grey value
         public int id;          //ID [0->totalpixels]
     };
@@ -35,6 +34,7 @@ namespace sharpclean
         public const int MAX_OBJECT_SIZE_ESTIMATE = 2700;   //if an object is bigger than this ignore it -- optimization thing
         public const int COLOR_CLEAR = 255;              //color to clear selections with
         public const int BRUSH_SIZE = 16;                //brush size for trajectory path
+		public const int WHITE_INT = 255;
     }
 
     //each pixel has eight neighbors

@@ -103,7 +103,6 @@ namespace sharpclean
             {
                 pixels[i].value = Convert.ToByte(line);
                 pixels[i].id = i;
-                pixels[i].found = false;
                 pixels[i].selected = false;
                 i++;
             }
@@ -121,7 +120,6 @@ namespace sharpclean
                 pixels[i].value = Convert.ToByte(buffer[i]);
                 pixels[i].id = i;
                 pixels[i].selected = false;
-                pixels[i].found = false;
             }
         }
 

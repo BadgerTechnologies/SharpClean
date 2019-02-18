@@ -134,17 +134,17 @@ namespace sharpclean
                     {
                         if (pd.id - width > 0)
                         {
-                            if (!p[pd.id - width].selected && !p[pd.id - width].found)
+                            if (!p[pd.id - width].selected)
                                 addtoPath(direction.up, pd.id - width); //up
                         }
                         if (pd.id % width != 0)
                         {
-                            if (!p[pd.id - 1].selected && !p[pd.id - 1].found)
+                            if (!p[pd.id - 1].selected)
                                 addtoPath(direction.left, pd.id - 1);   //left
                         }
                         if ((pd.id + 1) % width != 0)
                         {
-                            if (!p[pd.id + 1].selected && !p[pd.id + 1].found)
+                            if (!p[pd.id + 1].selected)
                                 addtoPath(direction.right, pd.id + 1);  //right
                         }
                         break;
@@ -153,17 +153,17 @@ namespace sharpclean
                     {
                         if (pd.id + width < total)
                         {
-                            if (!p[pd.id + width].selected && !p[pd.id + width].found)
+                            if (!p[pd.id + width].selected)
                                 addtoPath(direction.down, pd.id + width);   //down
                         }
                         if (pd.id % width != 0)
                         {
-                            if (!p[pd.id - 1].selected && !p[pd.id - 1].found)
+                            if (!p[pd.id - 1].selected)
                                 addtoPath(direction.left, pd.id - 1);   //left
                         }
                         if ((pd.id + 1) % width != 0)
                         {
-                            if (!p[pd.id + 1].selected && !p[pd.id + 1].found)
+                            if (!p[pd.id + 1].selected)
                                 addtoPath(direction.right, pd.id + 1);  //right
                         }
                         break;
@@ -172,17 +172,17 @@ namespace sharpclean
                     {
                         if (pd.id - width > 0)
                         {
-                            if (!p[pd.id - width].selected && !p[pd.id - width].found)
+                            if (!p[pd.id - width].selected)
                                 addtoPath(direction.up, pd.id - width); //up
                         }
                         if (pd.id + width < total)
                         {
-                            if (!p[pd.id + width].selected && !p[pd.id + width].found)
+                            if (!p[pd.id + width].selected)
                                 addtoPath(direction.down, pd.id + width);   //down
                         }
                         if (pd.id % width != 0)
                         {
-                            if (!p[pd.id - 1].selected && !p[pd.id - 1].found)
+                            if (!p[pd.id - 1].selected)
                                 addtoPath(direction.left, pd.id - 1);   //left
                         }
                         break;
@@ -191,17 +191,17 @@ namespace sharpclean
                     {
                         if (pd.id - width > 0)
                         {
-                            if (!p[pd.id - width].selected && !p[pd.id - width].found)
+                            if (!p[pd.id - width].selected)
                                 addtoPath(direction.up, pd.id - width); //up
                         }
                         if (pd.id + width < total)
                         {
-                            if (!p[pd.id + width].selected && !p[pd.id + width].found)
+                            if (!p[pd.id + width].selected)
                                 addtoPath(direction.down, pd.id + width);   //down
                         }
                         if ((pd.id + 1) % width != 0)
                         {
-                            if (!p[pd.id + 1].selected && !p[pd.id + 1].found)
+                            if (!p[pd.id + 1].selected)
                                 addtoPath(direction.right, pd.id + 1);  //right
                         }
                         break;
@@ -210,22 +210,22 @@ namespace sharpclean
                     {
                         if (pd.id - width > 0)
                         {
-                            if (!p[pd.id - width].selected && !p[pd.id - width].found)
+                            if (!p[pd.id - width].selected)
                                 addtoPath(direction.up, pd.id - width); //up
                         }
                         if (pd.id + width < total)
                         {
-                            if (!p[pd.id + width].selected && !p[pd.id + width].found)
+                            if (!p[pd.id + width].selected)
                                 addtoPath(direction.down, pd.id + width);   //down
                         }
                         if (pd.id % width != 0)
                         {
-                            if (!p[pd.id - 1].selected && !p[pd.id - 1].found)
+                            if (!p[pd.id - 1].selected)
                                 addtoPath(direction.left, pd.id - 1);   //left
                         }
                         if ((pd.id + 1) % width != 0)
                         {
-                            if (!p[pd.id + 1].selected && !p[pd.id + 1].found)
+                            if (!p[pd.id + 1].selected)
                                 addtoPath(direction.right, pd.id + 1);  //right
                         }
                         break;
@@ -235,6 +235,12 @@ namespace sharpclean
 
         private void clearPath()
         {
+			for(int i = 0; i < pathSize; i++)
+			{
+				if (p[curpath[i].id].value != constants.WHITE_INT)
+					p[curpath[i].id].selected = false;
+			}
+
             curpath.Clear();
             pathSize = 0;
         }
