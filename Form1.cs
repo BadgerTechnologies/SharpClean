@@ -13,23 +13,25 @@ using ImageMagick;
 /*
  * Sharp Clean: Program.cs
  * Author: Joey Harrison
+ * Edited: Austin Herman
  */
 
 namespace sharpclean
 {
     public partial class Form1 : Form
     {
-        fileOps mapCleanup = new fileOps();
-        image img = new image();
-        Image mapImage = null;
-        toolbox tBox = null;
-        string mapPath = "";
-        string csvPath = "";
-        string dirPath;
-        string trajPath;
-        string offsetPath;
-        string tempPGMPath = "";
-        string fileSaveName = "";
+        private fileOps mapCleanup = new fileOps();
+		private image img = new image();
+		private Image mapImage = null;
+		private toolbox tBox = null;
+		private string mapPath = "";
+		private string csvPath = "";
+		private string dirPath;
+		private string trajPath;
+		private string offsetPath;
+		private string tempPGMPath = "";
+		private string fileSaveName = "";
+		private bool imageLoaded = false;
 
         public Form1()
         {
@@ -37,7 +39,7 @@ namespace sharpclean
             InitializeComponent();
 
             // Adds the form closing event (the red x in the top right corner)
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            FormClosing += new FormClosingEventHandler(Form1_FormClosing);
         }
 
         private void Form1_FormClosing(object sender, System.ComponentModel.CancelEventArgs e) // Handle any unfinished things in the program
@@ -62,74 +64,43 @@ namespace sharpclean
             #endregion
         }
 
-        // This is the button click to save the file paths and load the image into the picture box
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Assign map path by bringing up file dialog
-            this.mapPath = this.mapCleanup.getImage();
+		#region Button Events
+		private void button1_Click(object sender, EventArgs e) // This is the button click to save the file paths and load the image into the picture box
+		{
+			// Assign map path by bringing up file dialog
+			if (mapCleanup.getUserPath())
+			{
+				mapPath = mapCleanup.getImagePath();
 
-            // check for pre-existing temp files - delete any if found
-            string[] files = Directory.GetFiles(Path.GetDirectoryName(mapPath), "*.pgm", SearchOption.AllDirectories);
-            for (int i = 0; i < files.Count(); i++) {
-                Console.WriteLine(files[i]);
-                if (Path.GetFileName(files[i]) == "temp.pgm" || Path.GetFileName(files[i]) == "temp2.pgm")
-                    File.Delete(files[i]);
-            }
+				// check for pre-existing temp files - delete any if found
+				RemoveTemporaryFiles(mapPath);
 
-            // Only continue if a valid .png file was selected
-            if (this.mapPath != "err::no_map_selected")
-            {
-                // Reset the progress bar
-                progressBar1.Visible = false;
-                label1.Visible = false;
+				// Reset the progress bar
+				progressBar1.Visible = false;
+				label1.Visible = false;
 
-                // Disable the Save Button
-                button3.Enabled = false;
+				// Disable the Save Button
+				button3.Enabled = false;
 
-                #region Try to dispose of the previous map image and delete the temporary file(s)
-                try
-                {
-                    File.Delete(mapCleanup.getTempPath());
-                    this.mapImage.Dispose();
-                }
-                catch (Exception ee)
-                {
-                    Console.WriteLine("Exception thrown: " + ee);
-                }
-                try
-                {
-                    File.Delete(tempPGMPath);
-                }
-                catch (Exception ee)
-                {
-                    Console.WriteLine("No file (temp2.pgm) found to delete. Error: " + ee);
-                }
-                #endregion
+				// if an image is loaded, remove it from GUI
+				if (imageLoaded)
+                    mapImage.Dispose();
 
-                // Assign the image and clear the picturebox
-                this.mapImage = Image.FromFile(this.mapPath);
-                pictureBox1.Image = null;
-
-                // Assign the image to the picture box
-                pictureBox1.Image = this.mapImage;
+                // set image
+                mapImage = Image.FromFile(mapPath);
+                pictureBox1.Image = mapImage;
 
                 // Assign the directory path and load the trajectory and offset files
-                this.dirPath = this.mapCleanup.getDir();
+                dirPath = mapCleanup.getDir();
 
                 // Assign the paths for the offset and trajectory files
-                this.offsetPath = mapCleanup.getOffset();
-                this.trajPath = mapCleanup.getTraj();
+                offsetPath = mapCleanup.getOffset();
+                trajPath = mapCleanup.getTraj();
 
                 // If the paths for both the offset and trajectory files aren't found, do not generate Park and Dock coordinates
-                if (this.offsetPath != "" && this.trajPath != "")
-                {
-                    mapCleanup.generateParkandDock(true);
-                }
-                else
-                {
-                    mapCleanup.generateParkandDock(false);
-                }
-
+                if (offsetPath != "" && trajPath != "")
+                    mapCleanup.generateParkandDock();
+				
                 // Generate a .pgm file 
                 string pgmPath = mapCleanup.generatePGM();
 
@@ -145,8 +116,8 @@ namespace sharpclean
                 string storeNumber = mapCleanup.getStoreInfo("number");
 
                 // Populate the labels with the store name and the store number
-                label4.Text = storeName;
-                label5.Text = storeNumber;
+                label4.Text = mapCleanup.getStoreInfo("name"); ;
+                label5.Text = mapCleanup.getStoreInfo("number");
 
                 // Create data path as "[directory]\[storename][storenumber]data.csv"
                 csvPath = mapCleanup.getDir() + "\\" + storeName + storeNumber + "data.csv";
@@ -283,5 +254,19 @@ namespace sharpclean
             MessageBox.Show("Eagle Eye not yet implemented!");
             button7.Enabled = true;
         }
-    }
+		#endregion
+
+		// check for pre-existing temp files - delete any if found
+		void RemoveTemporaryFiles(string path)
+		{
+			string[] files = Directory.GetFiles(Path.GetDirectoryName(path), "*.pgm", SearchOption.AllDirectories);
+
+			for (int i = 0; i < files.Count(); i++)
+			{
+				Console.WriteLine(files[i]);
+				if (Path.GetFileName(files[i]) == "temp.pgm" || Path.GetFileName(files[i]) == "temp2.pgm")
+					File.Delete(files[i]);
+			}
+		}
+	}
 }
