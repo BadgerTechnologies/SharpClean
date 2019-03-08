@@ -44,24 +44,18 @@ namespace sharpclean
 
         private void Form1_FormClosing(object sender, System.ComponentModel.CancelEventArgs e) // Handle any unfinished things in the program
         {
-            #region Try to delete the temporary files if they are in the directory
-            try
-            {
+            try {
                 File.Delete(mapCleanup.getTempPath());
             }
-            catch (Exception ee)
-            {
+            catch (Exception ee) {
                 Console.WriteLine("No file (temp.pgm) found to delete. Error: " + ee);
             }
-            try
-            {
+            try {
                 File.Delete(tempPGMPath);
             }
-            catch (Exception ee)
-            {
+            catch (Exception ee) {
                 Console.WriteLine("No file (temp2.pgm) found to delete. Error: " + ee);
             }
-            #endregion
         }
 
 		#region Button Events
