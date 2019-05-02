@@ -144,7 +144,6 @@ namespace sharpclean
             }
             walkPath = new intCoords[vertexes - 1];
 
-
             // store first two columns for park
             ss = trajfile.ReadLine().Split();
             park.x = Convert.ToDecimal(ss[0]);
@@ -187,7 +186,7 @@ namespace sharpclean
             return this.tempPath;
         }
 
-        public string generatePGM() // Generates 2 .pgm files from originally selected image and returns the path to a new pgm with the same name as the png
+        public string generatePGM() // Generates 1 .pgm file from originally selected image and returns the path to a new pgm with the same name as the png
         {
             // Set the temporary pgm file path
             tempPath = dirPath + "\\" + "temp.pgm";
@@ -197,6 +196,15 @@ namespace sharpclean
             {
                 pngMap.Write(tempPath);
                 return tempPath;
+            }
+        }
+
+        public MagickImage generateMagickImage() // Currently not implemented as of 4/16/2019 - Joey Harrison
+        {
+            // Using ImageMagick.NET, save the data from the .png file to a MagickImage
+            using (MagickImage pgmData = new MagickImage(imgPath))
+            {
+                return pgmData;
             }
         }
 

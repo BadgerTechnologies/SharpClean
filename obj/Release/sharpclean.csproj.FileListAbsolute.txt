@@ -12,3 +12,16 @@ C:\Users\100057822\Documents\GitHub\SharpClean\obj\Release\sharpclean.csproj.Cor
 C:\Users\100057822\Documents\GitHub\SharpClean\obj\Release\sharpclean.csproj.CopyComplete
 C:\Users\100057822\Documents\GitHub\SharpClean\obj\Release\sharpclean.exe
 C:\Users\100057822\Documents\GitHub\SharpClean\obj\Release\sharpclean.pdb
+C:\Users\100062056\source\repos\SharpClean w Eagle Eye Integration\bin\Release\sharpclean.exe.config
+C:\Users\100062056\source\repos\SharpClean w Eagle Eye Integration\bin\Release\sharpclean.exe
+C:\Users\100062056\source\repos\SharpClean w Eagle Eye Integration\bin\Release\sharpclean.pdb
+C:\Users\100062056\source\repos\SharpClean w Eagle Eye Integration\bin\Release\Magick.NET-Q16-AnyCPU.dll
+C:\Users\100062056\source\repos\SharpClean w Eagle Eye Integration\bin\Release\Magick.NET-Q16-AnyCPU.xml
+C:\Users\100062056\source\repos\SharpClean w Eagle Eye Integration\obj\Release\sharpclean.Form1.resources
+C:\Users\100062056\source\repos\SharpClean w Eagle Eye Integration\obj\Release\sharpclean.helpForm.resources
+C:\Users\100062056\source\repos\SharpClean w Eagle Eye Integration\obj\Release\sharpclean.Properties.Resources.resources
+C:\Users\100062056\source\repos\SharpClean w Eagle Eye Integration\obj\Release\sharpclean.csproj.GenerateResource.cache
+C:\Users\100062056\source\repos\SharpClean w Eagle Eye Integration\obj\Release\sharpclean.csproj.CoreCompileInputs.cache
+C:\Users\100062056\source\repos\SharpClean w Eagle Eye Integration\obj\Release\sharpclean.csproj.CopyComplete
+C:\Users\100062056\source\repos\SharpClean w Eagle Eye Integration\obj\Release\sharpclean.exe
+C:\Users\100062056\source\repos\SharpClean w Eagle Eye Integration\obj\Release\sharpclean.pdb

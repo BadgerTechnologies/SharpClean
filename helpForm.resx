@@ -136,6 +136,9 @@ Open Map In Gimp
 Only available after cleaning a dirty map and saving the file. 
 This will open the original and cleaned images in GIMP for post editing.
 
+Enable Eagle Eye
+Available after loading a usable map. Displays images of the store taken during mapping.
+
 Additional help can be found by clicking the link below.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
