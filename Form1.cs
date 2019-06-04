@@ -32,6 +32,7 @@ namespace sharpclean
 		private string tempPGMPath = "";
 		private string fileSaveName = "";
 		private bool imageLoaded = false;
+        private System.Diagnostics.Process eagleEye = new System.Diagnostics.Process();
 
         public Form1()
         {
@@ -44,6 +45,12 @@ namespace sharpclean
 
         private void Form1_FormClosing(object sender, System.ComponentModel.CancelEventArgs e) // Handle any unfinished things in the program
         {
+            // Close Eagle Eye with the program
+            if (eagleEyeRunning())
+            {
+                eagleEye.Kill();
+            }
+
             try {
                 File.Delete(mapCleanup.getTempPath());
             }
@@ -61,6 +68,16 @@ namespace sharpclean
 		#region Button Events
 		private void button1_Click(object sender, EventArgs e) // This is the button click to save the file paths and load the image into the picture box
 		{
+            // Clear the info label
+            label6.Text = "";
+            label6.ForeColor = Color.Blue;
+
+            // Attempt to close eagleEye if it is opened
+            if (eagleEyeRunning())
+            {
+                eagleEye.Kill();
+            }
+            
 			// Assign map path by bringing up file dialog
 			if (mapCleanup.getUserPath())
 			{
@@ -91,10 +108,19 @@ namespace sharpclean
                 offsetPath = mapCleanup.getOffset();
                 trajPath = mapCleanup.getTraj();
 
+                if (offsetPath == "" || trajPath == "")
+                {
+                    label6.Text = "Error: Trajectory/Offset file(s) not found!\n";
+                    label6.ForeColor = Color.Red;
+                    label6.Visible = true;
+                }
+
                 // If the paths for both the offset and trajectory files aren't found, do not generate Park and Dock coordinates
                 if (offsetPath != "" && trajPath != "")
+                {
                     mapCleanup.generateParkandDock();
-				
+                }
+
                 // Generate a .pgm file 
                 string pgmPath = mapCleanup.generatePGM();
 
@@ -131,6 +157,28 @@ namespace sharpclean
 
                 // Allow Eagle Eye to be turned on
                 button7.Enabled = true;
+
+                // Display status message to user
+                label6.Text = label6.Text + "Dirty map loaded.";
+
+                if (label6.ForeColor != Color.Red)
+                {
+                    label6.ForeColor = Color.Blue;
+                }
+                label6.Visible = true;
+            }
+            else
+            {
+                // Remove an image from the image box
+                pictureBox1.Image = null;
+
+                // Make Eagle Eye not executable
+                button7.Enabled = false;
+
+                // Display status message to user
+                label6.Text = "Error: Dirty map not loaded.";
+                label6.ForeColor = Color.Red;
+                label6.Visible = true;
             }
         }
 
@@ -138,7 +186,7 @@ namespace sharpclean
         {
             if (tBox != null)
             {
-                if (trajPath != "")
+                if (!(trajPath == "" || offsetPath == ""))
                     tBox.removeDebris(mapCleanup);
 
                 // Update the progress bar as the cleaning is performed
@@ -172,7 +220,9 @@ namespace sharpclean
                 pictureBox1.Image = tempPNG;
 
                 // Display a message and enable saving upon success
-                MessageBox.Show("Cleaning is done!", "Clean done", 0);
+                label6.ForeColor = Color.Blue;
+                label6.Text = "Cleaning is finished!";
+                //MessageBox.Show("Cleaning is done!", "Clean done", 0);
                 button3.Enabled = true; // Save Map Button
                 button4.Enabled = true; // Save Data button
 
@@ -180,7 +230,11 @@ namespace sharpclean
                 button2.Enabled = false;
             }
             else
-                MessageBox.Show("Toolbox was not loaded!", "Toolbox not loaded", 0);
+            {
+                label6.ForeColor = Color.Red;
+                label6.Text = "Error: Toolbox was not loaded!";
+                //MessageBox.Show("Toolbox was not loaded!", "Toolbox not loaded", 0);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e) // Saves the file
@@ -192,18 +246,22 @@ namespace sharpclean
             {
                 // Write the file, notify the user, and allow the user to open the original file in GIMP
                 img.write(fileSaveName);
-                MessageBox.Show("File successfully saved!", "File Saved", 0);
+                //MessageBox.Show("File successfully saved!", "File Saved", 0);
+                label6.Text = "File succesfully saved!";
+                label6.ForeColor = Color.Blue;
                 button6.Enabled = true;
             }
             catch
             {
-                MessageBox.Show("File was not saved.", "File Not Saved", 0);
+                label6.Text = "File was not saved!";
+                label6.ForeColor = Color.Red;
+                //MessageBox.Show("File was not saved.", "File Not Saved", 0);
             }
         }
 
         private void button4_Click(object sender, EventArgs e) // Save Data Button
         {
-            // Open/create csvfile, get hte object data from the toolbox
+            // Open/create csvfile, get the object data from the toolbox
             StreamWriter csvfile = new StreamWriter(csvPath);
             List<objectData> data = tBox.getObjectData();
 
@@ -223,7 +281,9 @@ namespace sharpclean
 
             csvfile.Close();
 
-            MessageBox.Show("Data Saved!", "Data Saved", 0);
+            label6.Text = "Data successfully saved!";
+            label6.ForeColor = Color.Blue;
+            //MessageBox.Show("Data Saved!", "Data Saved", 0);
         }
 
         private void button5_Click(object sender, EventArgs e) // Help Button
@@ -240,13 +300,44 @@ namespace sharpclean
 
             // Don't allow the user to open GIMP on the same file multiple times
             button6.Enabled = false;
+
+            label6.Text = "Map opened in GIMP";
+            label6.ForeColor = Color.Blue;
         }
 
         private void button7_Click(object sender, EventArgs e) // Eagle Eye Button
         {
-            button7.Enabled = false;
-            MessageBox.Show("Eagle Eye not yet implemented!");
-            button7.Enabled = true;
+            // Check to see if Eagle Eye is already running
+            if (eagleEyeRunning())
+            {
+                //MessageBox.Show("Eagle Eye is currently running!", "Error!");
+                label6.Text = "Eagle Eye is already running!";
+                label6.ForeColor = Color.Red;
+            }
+            else
+            {
+                // Get the directory of the current executable
+                string sharpCleanExecutableDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
+
+                // Remove the "path:\\:" from the beginning of the sharpCleanExecutableDirectory string
+                sharpCleanExecutableDirectory = sharpCleanExecutableDirectory.Remove(0, 6);
+
+                string eagleEyeDirectory = Path.GetFullPath(Path.Combine(sharpCleanExecutableDirectory, @"..\..\")) + "Eagle Eye\\";
+                //string eagleEyeExecutable = eagleEyeDirectory + "Eagle Eye.exe";
+                string eagleEyeExecutable = sharpCleanExecutableDirectory + "\\Eagle Eye\\" + "Eagle Eye.exe";
+
+                // Make the directory path contain double quotes
+                string fileDir = "\"" + this.dirPath + "\"";
+
+                // Execute the Eagle Eye Executable
+                eagleEye.StartInfo.FileName = eagleEyeExecutable;
+                eagleEye.StartInfo.WorkingDirectory = eagleEyeDirectory;
+                eagleEye.StartInfo.Arguments = fileDir;
+                eagleEye.Start();
+
+                label6.Text = "Eagle Eye is being run.";
+                label6.ForeColor = Color.Blue;
+            }
         }
 		#endregion
 
@@ -262,5 +353,24 @@ namespace sharpclean
 					File.Delete(files[i]);
 			}
 		}
-	}
+
+        // Check to see if Eagle Eye is running or not
+        bool eagleEyeRunning()
+        {
+            try
+            {
+                System.Diagnostics.Process.GetProcessById(eagleEye.Id);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
