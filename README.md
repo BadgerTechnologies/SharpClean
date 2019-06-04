@@ -6,8 +6,8 @@ Austin Herman, Joey Harrison, Brent Honaker, and Jair Ramirez
 This tool helps to automatically detect and remove unwanted clutter from dirty maps for the map cleaning process. 
 
 # Download the Latest Version
-SharpClean-1.0 - .zip
-https://drive.google.com/open?id=1l13uw5hpCcGVVL29KN53ZDA5LWVsqeZr
+SharpClean-1.6 -
+https://jabil.sharepoint.com/teams/Snapper2017/Shared%20Documents/Forms/AllItems.aspx?id=%2Fteams%2FSnapper2017%2FShared%20Documents%2FCustomer%20Operations%2F0%2E0%20Cust%20Ops%20Team%20Resources%2FSoftware%2Fsharpclean%2D1%2E06
 
 # Links
 Github -
